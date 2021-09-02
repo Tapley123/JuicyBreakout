@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ball
+    uniqueID: 143894481
+    locked: 0
+  - name: Paddle
+    uniqueID: 3144638613
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

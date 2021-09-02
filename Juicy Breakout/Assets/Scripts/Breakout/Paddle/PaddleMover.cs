@@ -37,7 +37,7 @@ public class PaddleMover : MonoBehaviour
 
 
         float clampedMouseXPos = Mathf.Clamp(Input.mousePosition.x, leftClamp, rightClamp);
-        Debug.Log("Mouse Position test for clamp values" + clampedMouseXPos);
+        //Debug.Log("Mouse Position test for clamp values" + clampedMouseXPos);
 
         float mouseXPosition = mainCamera.ScreenToWorldPoint(new Vector3(clampedMouseXPos, 0, 0)).x; //sets the current cursor location as 0 and then tracks the x value
         t.position = new Vector3(mouseXPosition, yStartPos, 0); //moves the paddle on the x axis to match the cursor's x value
