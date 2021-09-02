@@ -4,6 +4,24 @@ using UnityEngine;
 
 public class PaddleMover : MonoBehaviour
 {
+    #region Singleton
+    private static PaddleMover instance;
+
+    public static PaddleMover Instance => instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
+    #endregion
+
     private Transform t;
     private Camera mainCamera;
     private SpriteRenderer sr;
