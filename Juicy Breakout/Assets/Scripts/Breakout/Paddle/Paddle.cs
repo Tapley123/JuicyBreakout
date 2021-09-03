@@ -22,20 +22,16 @@ public class Paddle : MonoBehaviour
     }
     #endregion
 
+    #region Variables
+    [Header ("Class Refs")]
     private Transform t;
     private Camera mainCamera;
     private SpriteRenderer sr;
 
-    public float leftClamp, rightClamp;
-    private float defaultLeftClamp = 90.83893f;
-    private float defaultRightClamp = 1829.161f;
-
     private float yStartPos;
-    private float halfWidth;
     private float halfPaddleSize;
-    private float defaultPaddleWidth = 10;
-    
-    public float screenBoarderOffset = 100; // offset from screen boarder
+    private float leftClamp, rightClamp;
+    #endregion
 
     void Start()
     {
@@ -45,11 +41,9 @@ public class Paddle : MonoBehaviour
         yStartPos = t.position.y;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //halfWidth = sr.bounds.size.x/2;
-        halfPaddleSize = sr.bounds.size.x * sr.sprite.pixelsPerUnit / 2;
+        halfPaddleSize = sr.bounds.size.x * sr.sprite.pixelsPerUnit / 2; //calculates half of the paddles width based on the width of the sprite
 
         //only move the paddle if the game is not paused
         if (!BreakoutUIManager.Instance.paused)
@@ -58,7 +52,7 @@ public class Paddle : MonoBehaviour
 
     void PaddleMovement()
     {
-        leftClamp = 0 + halfPaddleSize;
+        leftClamp = 0 + halfPaddleSize; 
         rightClamp = Screen.width - halfPaddleSize;
 
         float clampedMouseXPos = Mathf.Clamp(Input.mousePosition.x, leftClamp, rightClamp);
