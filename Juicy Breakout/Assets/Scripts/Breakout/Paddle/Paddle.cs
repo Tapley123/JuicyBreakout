@@ -29,8 +29,8 @@ public class Paddle : MonoBehaviour
     private SpriteRenderer sr;
 
     private float yStartPos;
-    private float halfPaddleSize;
-    private float leftClamp, rightClamp;
+    [SerializeField]private float halfPaddleSize;
+    [SerializeField]private float leftClamp, rightClamp;
     #endregion
 
     void Start()
