@@ -44,7 +44,7 @@ public class BallsManager : MonoBehaviour
     {
         if(!BreakoutGameManager.Instance.IsGameStarted)
         {
-            Vector3 paddlePos = PaddleMover.Instance.transform.position;
+            Vector3 paddlePos = Paddle.Instance.transform.position;
             Vector3 ballPos = new Vector3(paddlePos.x, paddlePos.y + ySpawnOffset, 0);
             initialBall.transform.position = ballPos;
 
@@ -60,7 +60,7 @@ public class BallsManager : MonoBehaviour
 
     private void InitializeBall()
     {
-        Vector3 paddlePos = PaddleMover.Instance.transform.position;
+        Vector3 paddlePos = Paddle.Instance.transform.position;
         Vector3 startingPosition = new Vector3(paddlePos.x, paddlePos.y + ySpawnOffset, 0);
         initialBall = Instantiate(ballPrefab, startingPosition, Quaternion.identity);
         initialBallRb = initialBall.GetComponent<Rigidbody2D>();
