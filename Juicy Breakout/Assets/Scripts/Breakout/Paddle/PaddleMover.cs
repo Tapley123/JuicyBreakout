@@ -45,7 +45,9 @@ public class PaddleMover : MonoBehaviour
     {
         halfWidth = sr.bounds.size.x;
 
-        PaddleMovement();
+        //only move the paddle if the game is not paused
+        if(!BreakoutUIManager.Instance.paused)
+            PaddleMovement();
     }
 
     void PaddleMovement()

@@ -22,8 +22,10 @@ public class BallsManager : MonoBehaviour
     }
     #endregion
 
+    [Header ("Ball Variables")]
     [SerializeField] private Ball ballPrefab;
     [SerializeField] private float ySpawnOffset = 0.5f; // height the ball will spawned above the paddle
+    public float initialBallSpeed = 250;
 
     private Ball initialBall;
     private Rigidbody2D initialBallRb;
@@ -44,6 +46,14 @@ public class BallsManager : MonoBehaviour
             Vector3 paddlePos = PaddleMover.Instance.transform.position;
             Vector3 ballPos = new Vector3(paddlePos.x, paddlePos.y + ySpawnOffset, 0);
             initialBall.transform.position = ballPos;
+
+            //launch the ball and start the game
+            if (Input.GetMouseButtonDown(0))
+            {
+                initialBallRb.isKinematic = false;
+                initialBallRb.AddForce(new Vector2(0, initialBallSpeed)); //launch the ball straight up
+                BreakoutGameManager.Instance.IsGameStarted = true;
+            }
         }
     }
 
