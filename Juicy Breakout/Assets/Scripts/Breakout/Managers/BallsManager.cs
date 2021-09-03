@@ -26,6 +26,7 @@ public class BallsManager : MonoBehaviour
     [SerializeField] private Ball ballPrefab;
     [SerializeField] private float ySpawnOffset = 0.5f; // height the ball will spawned above the paddle
     public float initialBallSpeed = 250;
+    public float ballHorrizontalVelocity = 200; //applied when hitting the paddle
 
     private Ball initialBall;
     private Rigidbody2D initialBallRb;
