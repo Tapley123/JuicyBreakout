@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BreakoutUIManager : MonoBehaviour
 {
@@ -28,6 +29,18 @@ public class BreakoutUIManager : MonoBehaviour
     [SerializeField] private GameObject pausePanel;
     public List<GameObject> panels;
 
+    [Header("Music Settings")]
+    [SerializeField] private Image currentMusicIcon;
+    [SerializeField] private Sprite musicOnIcon;
+    [SerializeField] private Sprite musicOffIcon;
+    public Slider musicSlider;
+
+    [Header("Sound Effect Settings")]
+    [SerializeField] private Image currentSoundEffectIcon;
+    [SerializeField] private Sprite soundEffectsOnIcon;
+    [SerializeField] private Sprite soundEffectsOffIcon;
+    public Slider soundEffectSlider;
+
     void Start()
     {
         panels.Add(pausePanel);
@@ -43,6 +56,8 @@ public class BreakoutUIManager : MonoBehaviour
             Time.timeScale = 0;
         else
             Time.timeScale = 1;
+
+        PauseMenuBehaviors();
     }
 
     void TurnOffAllPanels()
@@ -51,6 +66,21 @@ public class BreakoutUIManager : MonoBehaviour
         {
             go.SetActive(false);
         }
+    }
+
+    void PauseMenuBehaviors()
+    {
+        // Toggles the music Icon when the music is turned on/off
+        if (musicSlider.value == 0)
+            currentMusicIcon.sprite = musicOffIcon;
+        else
+            currentMusicIcon.sprite = musicOnIcon;
+
+        // Toggles the sound effect Icon when the sound effects are turned on/off
+        if (soundEffectSlider.value == 0)
+            currentSoundEffectIcon.sprite = soundEffectsOffIcon;
+        else
+            currentSoundEffectIcon.sprite = soundEffectsOnIcon;
     }
 
     #region Buttons
